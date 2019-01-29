@@ -30,6 +30,7 @@ pipeline {
 				sh 'ls -l'
 			}
 		} // end of stage
+
 	} // end of stages
 
 	post {
@@ -37,4 +38,5 @@ pipeline {
 			fingerprint 'ball.tgz'
 		}
 	} // end of post
+
 }
