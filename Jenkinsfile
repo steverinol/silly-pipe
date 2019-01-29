@@ -27,6 +27,7 @@ pipeline {
 				 name: 'tarball', 
 				 useDefaultExcludes: false
 				 sh 'rm -f ball.tgz'
+				 sh 'rm -f you-know'
 			}
 		} // end of stage
 
