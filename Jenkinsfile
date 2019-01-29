@@ -23,6 +23,9 @@ pipeline {
 				sh 'rm -f ball.tgz || true'
 				sh 'echo "hi ho" > you-know'
 				sh 'tar czvf ball.tgz *'
+				stash includes: '*.tgz', 
+				 name: 'tarball', 
+				 useDefaultExcludes: false
 			}
 		} // end of stage
 
