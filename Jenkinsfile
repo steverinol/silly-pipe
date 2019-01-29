@@ -20,6 +20,7 @@ pipeline {
 
 		stage('create a file') {
 			steps {
+				sh 'rm -f ball.tgz || true'
 				sh 'echo "hi ho" > you-know'
 				sh 'tar czvf ball.tgz *'
 			}
