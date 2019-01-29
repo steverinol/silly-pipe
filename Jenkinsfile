@@ -21,7 +21,7 @@ pipeline {
 		stage('create a file') {
 			steps {
 				sh 'echo "hi ho" > you-know'
-				sh 'tar czvf ball.tgz'
+				sh 'tar czvf ball.tgz *'
 			}
 		} // end of stage
 
@@ -30,12 +30,13 @@ pipeline {
 				sh 'ls -l'
 			}
 		} // end of stage
-		
+
 	} // end of stages
 
 	post {
 		success {
 			fingerprint 'ball.tgz'
 		}
-	}
+	} // end of post
+
 }
