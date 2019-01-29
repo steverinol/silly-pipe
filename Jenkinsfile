@@ -23,11 +23,29 @@ pipeline {
 				sh 'rm -f ball.tgz || true'
 				sh 'echo "hi ho" > you-know'
 				sh 'tar czvf ball.tgz *'
+				stash includes: '*.tgz', 
+				 name: 'tarball', 
+				 useDefaultExcludes: false
+				 sh 'rm -f ball.tgz'
+				 sh 'rm -f you-know'
 			}
 		} // end of stage
 
 		stage('show us') {
 			steps {
+				sh 'ls -l'
+			}
+		} // end of stage
+
+		stage('develop only') {
+			when {
+				branch 'develop'
+			}
+			steps {
+				echo 'this is development'
+				unstash 'tarball'
+				sh 'tar xzvf ball.tgz'
+				sh 'rm -f ball.tgz'
 				sh 'ls -l'
 			}
 		} // end of stage
