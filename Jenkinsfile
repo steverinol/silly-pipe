@@ -45,6 +45,7 @@ pipeline {
 				echo 'this is development'
 				unstash 'tarball'
 				sh 'tar xzvf ball.tgz'
+				sh 'rm -f ball.tgz'
 				sh 'ls -l'
 			}
 		} // end of stage
