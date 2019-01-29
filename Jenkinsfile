@@ -32,6 +32,15 @@ pipeline {
 			}
 		} // end of stage
 
+		stage('develop only') {
+			when {
+				branch 'develop'
+			}
+			steps {
+				echo 'this is development'
+			}
+		} // end of stage
+
 	} // end of stages
 
 	post {
