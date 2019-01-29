@@ -26,6 +26,7 @@ pipeline {
 				stash includes: '*.tgz', 
 				 name: 'tarball', 
 				 useDefaultExcludes: false
+				 sh 'rm -f ball.tgz'
 			}
 		} // end of stage
 
@@ -41,6 +42,9 @@ pipeline {
 			}
 			steps {
 				echo 'this is development'
+				unstash 'tarball'
+				sh 'tar xzvf ball.tgz'
+				sh 'ls -l'
 			}
 		} // end of stage
 
